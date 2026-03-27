@@ -69,25 +69,27 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] text-white py-16 px-6 relative overflow-hidden text-left">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/5 blur-[120px] pointer-events-none" />
+    <div className="min-h-screen py-24 px-6 relative overflow-hidden text-left">
+      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] pointer-events-none animate-pulse-slow" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] pointer-events-none animate-pulse-slow object-cover" style={{ animationDelay: "1s" }} />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none z-0" />
       
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8 relative z-10">
           <div>
-            <h1 className="text-5xl font-black tracking-tighter mb-4 uppercase">Dashboard</h1>
-            <p className="text-gray-500 font-medium max-w-xl italic">Manage your active deployments and fund flow protocol.</p>
+            <h1 className="text-5xl font-black tracking-tighter mb-4 uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">Dashboard</h1>
+            <p className="text-gray-400 font-medium max-w-xl italic">Manage your active deployments and fund flow protocol.</p>
           </div>
           <Link
             href="/create"
-            className="px-8 py-4 rounded-2xl bg-cyan-500 text-black font-black text-xs uppercase tracking-widest hover:bg-cyan-400 transition shadow-xl active:scale-95"
+            className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,245,255,0.4)] active:scale-95 border border-cyan-400/50"
           >
             + New Project
           </Link>
         </div>
 
         {!loading && campaigns.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 relative z-10">
             <DashboardStat label="Total Projects" value={campaigns.length} icon="📂" />
             <DashboardStat label="Wallet" value="Active" icon="💰" />
             <DashboardStat label="Network" value="Sepolia" icon="🛡️" />
@@ -95,21 +97,21 @@ export default function DashboardPage() {
         )}
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
             {[1, 2, 3].map(i => (
-              <div key={i} className="h-96 bg-white/5 animate-pulse rounded-[2.5rem] border border-white/5" />
+              <div key={i} className="h-96 glass-card animate-pulse rounded-[2.5rem]" />
             ))}
           </div>
         ) : campaigns.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
             {campaigns.map((campaign, index) => (
               <DashboardFilter key={index} campaign={campaign} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-32 bg-white/[0.02] border border-dashed border-white/10 rounded-[3rem]">
-            <h2 className="text-2xl font-black mb-4">Registry Empty</h2>
-            <Link href="/create" className="text-cyan-400 font-bold hover:underline">Start Your First Campaign →</Link>
+          <div className="text-center py-32 glass-card border-dashed border-white/20 rounded-[3rem] relative z-10">
+            <h2 className="text-2xl font-black mb-4 text-white">Registry Empty</h2>
+            <Link href="/create" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors hover:neon-text-glow">Start Your First Campaign →</Link>
           </div>
         )}
       </div>
@@ -172,7 +174,7 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
   const coverImg = CATEGORY_DATA[activeCategory]?.img || CATEGORY_DATA["Default"].img;
 
   return (
-    <div className={`group bg-white/[0.03] backdrop-blur-2xl border border-white/10 rounded-[2.5rem] overflow-hidden flex flex-col h-full transition-all duration-500 hover:scale-[1.02] ${isExpired ? 'opacity-75 grayscale-[0.2]' : ''}`}>
+    <div className={`group glass-card rounded-[2.5rem] overflow-hidden flex flex-col h-full transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,245,255,0.2)] hover:border-cyan-500/50 ${isExpired ? 'opacity-75 grayscale-[0.2]' : ''}`}>
       
       <div className="relative h-44 overflow-hidden">
         <img src={coverImg} alt="Campaign" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
@@ -211,7 +213,7 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
 
             <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
               <div 
-                className={`h-full transition-all duration-1000 ${isExpired ? 'bg-gray-500' : 'bg-gradient-to-r from-cyan-500 to-blue-600'}`}
+                className={`h-full transition-all duration-1000 ${isExpired ? 'bg-gray-500' : 'bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 animate-pulse'}`}
                 style={{ width: `${progress}%` }}
               />
             </div>
@@ -226,7 +228,7 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
           ) : safeStatus === 1 ? (
             <Link
               href={`/campaign/${campaign.campaignAddress}`}
-              className="flex items-center justify-center w-full py-4 rounded-2xl bg-white text-black font-black text-xs uppercase tracking-[0.2em] hover:bg-cyan-400 transition-all active:scale-95 shadow-xl"
+              className="flex items-center justify-center w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_15px_rgba(0,245,255,0.3)] hover:shadow-[0_0_25px_rgba(0,245,255,0.5)] border border-cyan-400/50"
             >
               Manage & Fund →
             </Link>
@@ -251,12 +253,15 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
 
 function DashboardStat({ label, value, icon }: { label: string; value: string | number; icon: string }) {
   return (
-    <div className="bg-white/[0.03] border border-white/10 rounded-[2rem] p-8 text-left hover:border-cyan-500/30 transition-all group">
-      <div className="flex items-center gap-4 mb-4">
-        <span className="text-xl bg-white/5 p-2 rounded-xl group-hover:scale-110 transition-transform">{icon}</span>
-        <span className="text-gray-500 text-[10px] font-bold uppercase tracking-widest">{label}</span>
+    <div className="glass-card rounded-[2rem] p-8 text-left hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)] transition-all duration-500 group relative overflow-hidden">
+      <div className="absolute -inset-1 bg-gradient-to-br from-cyan-500/0 via-cyan-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" />
+      <div className="relative z-10">
+        <div className="flex items-center gap-4 mb-4">
+          <span className="text-xl bg-white/5 p-3 rounded-xl group-hover:scale-110 group-hover:text-cyan-400 transition-all border border-white/5 group-hover:border-cyan-500/30 shadow-[0_0_10px_rgba(0,0,0,0.5)]">{icon}</span>
+          <span className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em]">{label}</span>
+        </div>
+        <p className="text-4xl font-black tracking-tighter text-white group-hover:text-cyan-400 group-hover:neon-text-glow transition-all duration-300">{value}</p>
       </div>
-      <p className="text-4xl font-black tracking-tighter text-white">{value}</p>
     </div>
   );
 }

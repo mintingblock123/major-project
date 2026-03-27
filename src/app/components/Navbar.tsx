@@ -2,53 +2,70 @@
 
 import { client } from "@/app/client";
 import Link from "next/link";
-import { ConnectButton, lightTheme, useActiveAccount } from "thirdweb/react";
+import { ConnectButton, darkTheme, useActiveAccount } from "thirdweb/react";
 
 const Navbar = () => {
   const account = useActiveAccount();
 
   return (
-    <nav className="bg-slate-100 border-b-2 border-b-slate-300">
-      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
-        <div className="relative flex h-16 items-center justify-between">
+    <nav className="fixed w-full z-50 bg-[#030014]/50 backdrop-blur-xl border-b border-white/5 transition-all">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="relative flex h-20 items-center justify-between">
 
           {/* Left Side */}
-          <div className="flex items-center space-x-6">
-            <Link href="/">
-              <p className="text-xl font-bold text-slate-800">
-                FundFlow Crowdfunding
+          <div className="flex items-center space-x-8">
+            <Link href="/" className="group flex items-center gap-2">
+              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-600 flex flex-shrink-0 items-center justify-center neon-border">
+                <span className="text-white font-black text-lg leading-none">F</span>
+              </div>
+              <p className="text-2xl font-black text-white tracking-tighter group-hover:text-cyan-400 transition-colors">
+                FundFlow
               </p>
             </Link>
 
-            <Link href="/">
-              <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:text-black">
-                Campaigns
-              </p>
-            </Link>
-
-            {account && (
-              <Link href={`/dashboard/${account.address}`}>
-                <p className="rounded-md px-3 py-2 text-sm font-medium text-slate-700 hover:text-black">
-                  Dashboard
+            <div className="hidden md:flex items-center space-x-2">
+              <Link href="/">
+                <p className="rounded-full px-4 py-2 text-sm font-bold text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all">
+                  Campaigns
                 </p>
               </Link>
-            )}
+
+              {account && (
+                <Link href={`/dashboard`}>
+                  <p className="rounded-full px-4 py-2 text-sm font-bold text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all">
+                    Dashboard
+                  </p>
+                </Link>
+              )}
+
+              <Link href="/admin">
+                <p className="rounded-full px-4 py-2 text-sm font-bold text-gray-300 hover:text-cyan-400 hover:bg-white/5 transition-all">
+                  Admin
+                </p>
+              </Link>
+            </div>
           </div>
 
           {/* Right Side */}
-          <div>
+          <div className="flex items-center gap-4">
             <ConnectButton
               client={client}
-              theme={lightTheme({
+              theme={darkTheme({
                 colors: {
                   primaryButtonBg: "#0f172a",
                   primaryButtonText: "#ffffff",
+                  accentText: "#00f5ff",
+                  accentButtonBg: "#7b61ff",
+                  primaryText: "#ffffff",
+                  secondaryText: "#9ca3af",
                 },
               })}
               detailsButton={{
                 style: {
-                  height: "42px",
-                  borderRadius: "8px",
+                  height: "44px",
+                  borderRadius: "12px",
+                  border: "1px solid rgba(255,255,255,0.1)",
+                  backgroundColor: "rgba(255,255,255,0.05)",
                 },
               }}
             />

@@ -137,46 +137,30 @@ export default function HomePage() {
   };
 
   return (
-    <main className="min-h-screen bg-[#020617] text-white overflow-x-hidden relative">
+    <main className="min-h-screen overflow-x-hidden relative">
       {/* BACKGROUND DECORATION */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-cyan-500/10 blur-[120px] pointer-events-none" />
-
-      {/* NAVBAR */}
-      <nav className="sticky top-0 z-50 backdrop-blur-md border-b border-white/5 bg-black/20">
-        <div className="flex items-center justify-between px-8 py-5 max-w-7xl mx-auto">
-          <h1 className="text-2xl font-black tracking-tighter text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
-            FUNDFLOW
-          </h1>
-          <div className="hidden md:flex gap-8 text-sm font-medium">
-            <Link href="/" className="text-cyan-400">Home</Link>
-            <Link href="/dashboard" className="text-gray-400 hover:text-white transition">Explore</Link>
-            <Link href="/create" className="text-gray-400 hover:text-white transition">Create</Link>
-            <Link href="/admin" className="text-red-500/80 hover:text-red-400 transition">Admin</Link>
-          </div>
-          <Link href="/dashboard" className="bg-white text-black px-5 py-2 rounded-full text-sm font-bold hover:bg-cyan-400 transition">
-            Connect Wallet
-          </Link>
-        </div>
-      </nav>
+      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[700px] bg-cyan-500/20 blur-[150px] rounded-full pointer-events-none animate-pulse-slow" />
+      <div className="absolute top-[20%] right-[-10%] w-[40%] h-[600px] bg-purple-600/20 blur-[150px] rounded-full pointer-events-none animate-pulse-slow" style={{ animationDelay: "1s" }} />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none z-0" />
 
       {/* HERO SECTION */}
-      <section className="relative pt-32 pb-16 px-6 max-w-7xl mx-auto text-center">
+      <section className="relative pt-40 pb-20 px-6 max-w-7xl mx-auto text-center z-10 animate-float">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <span className="px-4 py-1.5 rounded-full border border-cyan-500/30 text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/5">
+          <span className="px-4 py-1.5 rounded-full border border-cyan-500/50 text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
             The Next Gen Crowdfunding
           </span>
           <h1 className="mt-8 text-6xl md:text-8xl font-black leading-tight tracking-tight">
-            Fund the <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500">Future</span>.
+            Fund the <span className="text-gradient neon-text-glow">Future</span>.
           </h1>
           <p className="mt-6 max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
             Eliminate middlemen and build trust. FundFlow uses smart contracts to ensure 
             every penny reaches the right cause with 100% transparency.
           </p>
-          <div className="mt-12 flex justify-center gap-4 flex-wrap">
-            <Link href="/create" className="px-8 py-4 rounded-2xl font-bold bg-cyan-500 hover:bg-cyan-400 text-black shadow-lg shadow-cyan-500/20 transition-all hover:scale-105">
+          <div className="mt-12 flex justify-center gap-6 flex-wrap">
+            <Link href="/create" className="px-8 py-4 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-[0_0_20px_rgba(0,245,255,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,245,255,0.6)] border border-cyan-400/50">
               Start a Campaign
             </Link>
-            <Link href="/dashboard" className="px-8 py-4 rounded-2xl font-bold border border-white/10 bg-white/5 hover:bg-white/10 backdrop-blur-sm transition-all hover:border-white/20">
+            <Link href="/dashboard" className="px-8 py-4 rounded-2xl font-bold glass-card hover:bg-white/10 transition-all hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,245,255,0.2)]">
               Explore Projects
             </Link>
           </div>
@@ -203,21 +187,22 @@ export default function HomePage() {
       </section>
 
       {/* CAMPAIGN SPOTLIGHT */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
-        <div className="bg-gradient-to-br from-cyan-500/10 to-purple-500/10 border border-white/10 rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-cyan-400/10 blur-[80px] -z-10" />
-          <div className="w-full md:w-1/2 aspect-video rounded-3xl overflow-hidden border border-white/10">
+      <section className="max-w-7xl mx-auto px-6 py-20 relative z-10">
+        <div className="glass-card rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative group">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-400/20 blur-[100px] -z-10 group-hover:bg-purple-500/20 transition-colors duration-1000" />
+          <div className="absolute -bottom-10 -left-10 w-[300px] h-[300px] bg-pink-500/10 blur-[100px] -z-10" />
+          <div className="w-full md:w-1/2 aspect-video rounded-3xl overflow-hidden neon-border">
             <img 
               src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800" 
-              className="w-full h-full object-cover" 
+              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
               alt="Spotlight"
             />
           </div>
           <div className="w-full md:w-1/2 text-left">
-            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest">Featured Spotlight</span>
-            <h2 className="text-3xl md:text-5xl font-black mt-4 mb-6">Innovating the Web3 Infrastructure</h2>
-            <p className="text-gray-400 text-lg mb-8">This campaign is leading the way in building carbon-neutral node systems for the next generation of decentralized applications.</p>
-            <Link href="/dashboard" className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 transition">View Details</Link>
+            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest neon-text-glow">Featured Spotlight</span>
+            <h2 className="text-3xl md:text-5xl font-black mt-4 mb-6 text-white">Innovating the Web3 Infrastructure</h2>
+            <p className="text-gray-300 text-lg mb-8">This campaign is leading the way in building carbon-neutral node systems for the next generation of decentralized applications.</p>
+            <Link href="/dashboard" className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(0,245,255,0.4)] transition-all">View Details</Link>
           </div>
         </div>
       </section>
@@ -238,19 +223,19 @@ export default function HomePage() {
       </section>
 
       {/* TRENDING CAMPAIGNS SECTION */}
-      <section className="py-24 max-w-7xl mx-auto px-6">
+      <section className="py-24 max-w-7xl mx-auto px-6 relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
           <div className="text-left">
-            <h2 className="text-3xl font-bold">Trending Campaigns</h2>
-            <p className="text-gray-500 mt-2">Explore projects that are making waves on the blockchain.</p>
+            <h2 className="text-3xl font-bold flex items-center gap-3">Trending Campaigns <span className="flex h-3 w-3 relative"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span></span></h2>
+            <p className="text-gray-400 mt-2">Explore projects that are making waves on the blockchain.</p>
           </div>
           <div className="flex gap-2 w-full md:w-auto">
              <input 
               type="text" 
               placeholder="Search..." 
-              className="bg-white/5 border border-white/10 rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 transition w-full md:w-64"
+              className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_10px_rgba(0,245,255,0.2)] transition-all w-full md:w-64 text-white"
             />
-            <Link href="/dashboard" className="text-cyan-400 hover:underline font-medium text-sm whitespace-nowrap pt-2">
+            <Link href="/dashboard" className="text-cyan-400 hover:text-white hover:text-shadow-[0_0_10px_rgba(0,245,255,0.5)] font-bold text-sm whitespace-nowrap pt-2 transition-all">
               View All →
             </Link>
           </div>
@@ -448,50 +433,51 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
   const percentage = Math.min((parseFloat(raised) / parseFloat(goal)) * 100, 100);
 
   return (
-    <div className="bg-white/[0.03] border border-white/10 rounded-3xl overflow-hidden group hover:border-white/20 transition-all text-left">
-      <div className="relative h-48 overflow-hidden">
+    <div className="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,245,255,0.2)] transition-all duration-500 text-left border border-white/5 hover:border-cyan-500/50">
+      <div className="relative h-56 overflow-hidden">
         <img 
           src={img} 
           alt={title} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" 
+          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" 
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-[#030014]/40 to-transparent" />
         <div className="absolute top-4 left-4">
-          <span className="bg-black/60 backdrop-blur-md px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider text-cyan-400 border border-white/10">
+          <span className="bg-black/40 backdrop-blur-xl px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-cyan-400 border border-cyan-500/30 shadow-[0_0_10px_rgba(0,245,255,0.2)]">
             {category}
           </span>
         </div>
       </div>
 
-      <div className="p-6">
-        <h3 className="text-lg font-bold mb-1 line-clamp-1">{title}</h3>
-        <p className="text-[10px] text-gray-500 mb-6 font-mono tracking-tighter">{address}</p>
+      <div className="p-6 relative">
+        <h3 className="text-xl font-bold mb-1 line-clamp-1 text-white group-hover:text-cyan-400 transition-colors">{title}</h3>
+        <p className="text-[10px] text-gray-500 mb-6 font-mono tracking-tighter uppercase">{address}</p>
 
-        <div className="space-y-2 mb-6">
-          <div className="flex justify-between text-xs font-medium">
-            <span className="text-cyan-400">{raised} ETH</span>
-            <span className="text-gray-400">{percentage.toFixed(1)}%</span>
+        <div className="space-y-3 mb-6">
+          <div className="flex justify-between text-xs font-bold">
+            <span className="text-cyan-400 neon-text-glow">{raised} ETH Raised</span>
+            <span className="text-gray-300">{percentage.toFixed(1)}%</span>
           </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
             <div 
-              className="h-full bg-gradient-to-r from-cyan-500 to-blue-600 transition-all duration-1000" 
+              className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 transition-all duration-1000 animate-pulse" 
               style={{ width: `${percentage}%` }}
             />
           </div>
-          <div className="text-[10px] text-gray-500 text-right uppercase tracking-tighter">
+          <div className="text-[10px] text-gray-500 text-right uppercase tracking-tighter font-bold">
             Goal: {goal} ETH
           </div>
         </div>
 
-        <div className="flex justify-between items-center border-t border-white/5 pt-4">
+        <div className="flex justify-between items-center border-t border-white/5 pt-5">
           <div className="flex flex-col">
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest">Time Left</span>
-            <span className="text-sm font-semibold">{deadline}</span>
+            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Time Left</span>
+            <span className="text-sm font-semibold text-gray-200">{deadline}</span>
           </div>
           <Link 
             href="/dashboard" 
-            className="px-4 py-2 bg-white/5 hover:bg-white/10 rounded-xl text-xs font-bold transition border border-white/5"
+            className="px-5 py-2 glass-card hover:bg-cyan-500/20 rounded-xl text-xs font-bold transition-all border border-white/10 hover:border-cyan-400 text-white"
           >
-            View Details
+            View
           </Link>
         </div>
       </div>
@@ -501,19 +487,20 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
 
 function StatCard({ value, label, isLoading }: { value: string; label: string; isLoading: boolean }) {
   return (
-    <div className="relative group bg-white/5 border border-white/10 rounded-3xl p-8 overflow-hidden transition-all hover:border-cyan-500/50">
+    <div className="relative group glass-card rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)]">
+      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
       {isLoading ? (
-        <div className="animate-pulse space-y-3 text-center">
+        <div className="animate-pulse space-y-3 text-center relative z-10">
           <div className="h-10 w-32 bg-white/10 rounded-lg mx-auto"></div>
           <div className="h-4 w-24 bg-white/5 rounded-lg mx-auto"></div>
         </div>
       ) : (
-        <>
-          <p className="text-5xl font-black tracking-tighter text-white group-hover:text-cyan-400 transition-colors text-center">
+        <div className="relative z-10">
+          <p className="text-5xl font-black tracking-tighter text-white group-hover:text-cyan-400 group-hover:neon-text-glow transition-all duration-300 text-center">
             {value}
           </p>
-          <p className="text-gray-400 font-medium mt-2 uppercase text-xs tracking-widest text-center">{label}</p>
-        </>
+          <p className="text-gray-400 font-bold mt-3 uppercase text-xs tracking-[0.2em] text-center">{label}</p>
+        </div>
       )}
     </div>
   );

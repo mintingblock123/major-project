@@ -15,16 +15,6 @@ import {
 export default function CampaignPage() {
   const params = useParams();
   const address = params?.campaignAddress as string;
-
-  const account = useActiveAccount();
-  const { mutateAsync: sendTx, isPending } = useSendTransaction();
-
-  const [tierName, setTierName] = useState("");
-  const [tierAmount, setTierAmount] = useState("");
-  const [addingTier, setAddingTier] = useState(false);
-  const [refresh, setRefresh] = useState(0);
-
-  // Guard Clause for Loading
   if (!address) {
     return (
       <div className="min-h-screen bg-[#020617] flex items-center justify-center">
@@ -32,6 +22,17 @@ export default function CampaignPage() {
       </div>
     );
   }
+  return <CampaignDetails address={address} />;
+}
+
+function CampaignDetails({ address }: { address: string }) {
+  const account = useActiveAccount();
+  const { mutateAsync: sendTx, isPending } = useSendTransaction();
+
+  const [tierName, setTierName] = useState("");
+  const [tierAmount, setTierAmount] = useState("");
+  const [addingTier, setAddingTier] = useState(false);
+  const [refresh, setRefresh] = useState(0);
 
   const contract = getContract({
     client,
@@ -138,7 +139,7 @@ export default function CampaignPage() {
                   </div>
                   <div>
                     <p className="text-gray-600 text-[10px] font-black uppercase tracking-widest mb-1">Total Backers</p>
-                    <p className="text-2xl font-black tracking-tight">{tiers?.reduce((acc, t) => acc + Number(t.backers), 0) || 0}</p>
+                    <p className="text-2xl font-black tracking-tight">{tiers?.reduce((acc: any, t: any) => acc + Number(t.backers), 0) || 0}</p>
                   </div>
                 </div>
               </div>

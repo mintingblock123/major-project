@@ -139,28 +139,28 @@ export default function HomePage() {
   return (
     <main className="min-h-screen overflow-x-hidden relative">
       {/* BACKGROUND DECORATION */}
-      <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[700px] bg-cyan-500/20 blur-[150px] rounded-full pointer-events-none animate-pulse-slow" />
-      <div className="absolute top-[20%] right-[-10%] w-[40%] h-[600px] bg-purple-600/20 blur-[150px] rounded-full pointer-events-none animate-pulse-slow" style={{ animationDelay: "1s" }} />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-web3-grid opacity-30 pointer-events-none z-0" />
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#111827]/50 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none z-0" />
 
       {/* HERO SECTION */}
-      <section className="relative pt-40 pb-20 px-6 max-w-7xl mx-auto text-center z-10 animate-float">
+      <section className="relative pt-48 pb-24 px-6 max-w-7xl mx-auto text-center z-10 animate-float">
         <div className="animate-in fade-in slide-in-from-bottom-4 duration-1000">
-          <span className="px-4 py-1.5 rounded-full border border-cyan-500/50 text-cyan-400 text-xs font-bold uppercase tracking-widest bg-cyan-500/10 shadow-[0_0_15px_rgba(0,245,255,0.2)]">
+          <span className="px-4 py-1.5 rounded-full border border-white/[0.06] text-[#9CA3AF] text-xs font-bold uppercase tracking-widest bg-[#111827]">
             The Next Gen Crowdfunding
           </span>
-          <h1 className="mt-8 text-6xl md:text-8xl font-black leading-tight tracking-tight">
-            Fund the <span className="text-gradient neon-text-glow">Future</span>.
+          <h1 className="mt-8 text-6xl md:text-8xl font-black leading-tight tracking-tight text-[#E5E7EB]">
+            Fund the <span className="text-gradient">Future</span>.
           </h1>
-          <p className="mt-6 max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
+          <p className="mt-8 max-w-2xl mx-auto text-[#9CA3AF] text-lg md:text-xl leading-relaxed">
             Eliminate middlemen and build trust. FundFlow uses smart contracts to ensure 
             every penny reaches the right cause with 100% transparency.
           </p>
           <div className="mt-12 flex justify-center gap-6 flex-wrap">
-            <Link href="/create" className="px-8 py-4 rounded-2xl font-bold bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-[0_0_20px_rgba(0,245,255,0.4)] transition-all hover:scale-105 hover:shadow-[0_0_30px_rgba(0,245,255,0.6)] border border-cyan-400/50">
+            <Link href="/create" className="px-8 py-4 rounded-xl font-bold bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-sm transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(34,211,238,0.2)] active:scale-[0.98]">
               Start a Campaign
             </Link>
-            <Link href="/dashboard" className="px-8 py-4 rounded-2xl font-bold glass-card hover:bg-white/10 transition-all hover:border-cyan-500/50 hover:shadow-[0_0_15px_rgba(0,245,255,0.2)]">
+            <Link href="/dashboard" className="px-8 py-4 rounded-xl font-bold glass-card glass-card-hover text-[#E5E7EB]">
               Explore Projects
             </Link>
           </div>
@@ -178,7 +178,7 @@ export default function HomePage() {
       </div>
 
       {/* STATS SECTION */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-24">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <StatCard value={`${totalCampaigns}+`} label="Active Campaigns" isLoading={isLoading} />
           <StatCard value={`${totalFunds} ETH`} label="Funds Raised" isLoading={isLoading} />
@@ -187,22 +187,21 @@ export default function HomePage() {
       </section>
 
       {/* CAMPAIGN SPOTLIGHT */}
-      <section className="max-w-7xl mx-auto px-6 py-20 relative z-10">
-        <div className="glass-card rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative group">
-          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-cyan-400/20 blur-[100px] -z-10 group-hover:bg-purple-500/20 transition-colors duration-1000" />
-          <div className="absolute -bottom-10 -left-10 w-[300px] h-[300px] bg-pink-500/10 blur-[100px] -z-10" />
-          <div className="w-full md:w-1/2 aspect-video rounded-3xl overflow-hidden neon-border">
+      <section className="max-w-7xl mx-auto px-6 py-24 relative z-10">
+        <div className="glass-card rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative group">
+          <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#22D3EE]/5 blur-[100px] -z-10 transition-colors duration-1000" />
+          <div className="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden border border-white/[0.06]">
             <img 
               src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800" 
-              className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700" 
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90" 
               alt="Spotlight"
             />
           </div>
           <div className="w-full md:w-1/2 text-left">
-            <span className="text-cyan-400 font-bold text-xs uppercase tracking-widest neon-text-glow">Featured Spotlight</span>
-            <h2 className="text-3xl md:text-5xl font-black mt-4 mb-6 text-white">Innovating the Web3 Infrastructure</h2>
-            <p className="text-gray-300 text-lg mb-8">This campaign is leading the way in building carbon-neutral node systems for the next generation of decentralized applications.</p>
-            <Link href="/dashboard" className="px-6 py-3 bg-white text-black font-bold rounded-xl hover:bg-cyan-400 hover:shadow-[0_0_15px_rgba(0,245,255,0.4)] transition-all">View Details</Link>
+            <span className="text-[#9CA3AF] font-bold text-xs uppercase tracking-widest">Featured Spotlight</span>
+            <h2 className="text-3xl md:text-5xl font-black mt-4 mb-6 text-[#E5E7EB]">Innovating the Web3 Infrastructure</h2>
+            <p className="text-[#9CA3AF] text-lg mb-8">This campaign is leading the way in building carbon-neutral node systems for the next generation of decentralized applications.</p>
+            <Link href="/dashboard" className="px-6 py-3 bg-[#E5E7EB] text-[#111827] font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]">View Details</Link>
           </div>
         </div>
       </section>
@@ -223,19 +222,19 @@ export default function HomePage() {
       </section>
 
       {/* TRENDING CAMPAIGNS SECTION */}
-      <section className="py-24 max-w-7xl mx-auto px-6 relative z-10">
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 gap-6">
+      <section className="py-32 max-w-7xl mx-auto px-6 relative z-10">
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
           <div className="text-left">
-            <h2 className="text-3xl font-bold flex items-center gap-3">Trending Campaigns <span className="flex h-3 w-3 relative"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-500"></span></span></h2>
-            <p className="text-gray-400 mt-2">Explore projects that are making waves on the blockchain.</p>
+            <h2 className="text-3xl font-bold flex items-center gap-3 text-[#E5E7EB]">Trending Campaigns <span className="flex h-3 w-3 relative"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#22D3EE] opacity-50"></span><span className="relative inline-flex rounded-full h-3 w-3 bg-[#22D3EE]"></span></span></h2>
+            <p className="text-[#9CA3AF] mt-2">Explore projects that are making waves on the blockchain.</p>
           </div>
           <div className="flex gap-2 w-full md:w-auto">
              <input 
               type="text" 
               placeholder="Search..." 
-              className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-cyan-500 focus:shadow-[0_0_10px_rgba(0,245,255,0.2)] transition-all w-full md:w-64 text-white"
+              className="bg-[#111827] border border-white/[0.06] rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#22D3EE] focus:ring-1 focus:ring-[#22D3EE]/40 transition-all w-full md:w-64 text-[#E5E7EB]"
             />
-            <Link href="/dashboard" className="text-cyan-400 hover:text-white hover:text-shadow-[0_0_10px_rgba(0,245,255,0.5)] font-bold text-sm whitespace-nowrap pt-2 transition-all">
+            <Link href="/dashboard" className="text-[#9CA3AF] hover:text-[#22D3EE] font-bold text-sm whitespace-nowrap pt-2 transition-colors duration-200">
               View All →
             </Link>
           </div>
@@ -249,10 +248,10 @@ export default function HomePage() {
       </section>
 
       {/* HOW IT WORKS SECTION (VERTICAL STEPPER) */}
-      <section className="py-24 max-w-4xl mx-auto px-6 text-left">
-        <h2 className="text-3xl font-bold text-center mb-20">How FundFlow Works</h2>
+      <section className="py-32 max-w-4xl mx-auto px-6 text-left border-t border-white/[0.06]">
+        <h2 className="text-3xl font-bold text-center mb-20 text-[#E5E7EB]">How FundFlow Works</h2>
         <div className="space-y-16 relative">
-          <div className="absolute left-[23px] top-10 bottom-10 w-[2px] bg-gradient-to-b from-cyan-500 to-purple-600 hidden md:block opacity-20" />
+          <div className="absolute left-[23px] top-10 bottom-10 w-[2px] bg-white/[0.06] hidden md:block" />
           
           <Step 
             number="01" 
@@ -339,12 +338,12 @@ export default function HomePage() {
 function Step({ number, title, desc }: { number: string; title: string; desc: string }) {
   return (
     <div className="flex gap-8 items-start group">
-      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-cyan-400 font-black z-10 group-hover:border-cyan-500 transition-colors">
+      <div className="flex-shrink-0 w-12 h-12 rounded-full bg-[#111827] border border-white/[0.06] flex items-center justify-center text-[#22D3EE] font-black z-10 transition-colors duration-300 group-hover:border-[#22D3EE]/50">
         {number}
       </div>
       <div>
-        <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
-        <p className="text-gray-400 leading-relaxed max-w-2xl">{desc}</p>
+        <h3 className="text-xl font-bold text-[#E5E7EB] mb-2">{title}</h3>
+        <p className="text-[#9CA3AF] leading-relaxed max-w-2xl">{desc}</p>
       </div>
     </div>
   );
@@ -433,49 +432,55 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
   const percentage = Math.min((parseFloat(raised) / parseFloat(goal)) * 100, 100);
 
   return (
-    <div className="glass-card rounded-[2rem] overflow-hidden group hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,245,255,0.2)] transition-all duration-500 text-left border border-white/5 hover:border-cyan-500/50">
-      <div className="relative h-56 overflow-hidden">
+    <div className="glass-card glass-card-hover rounded-2xl overflow-hidden group text-left flex flex-col h-full bg-[#111827]">
+      <div className="relative h-48 overflow-hidden">
         <img 
           src={img} 
           alt={title} 
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-80" 
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" 
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#030014] via-[#030014]/40 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent" />
         <div className="absolute top-4 left-4">
-          <span className="bg-black/40 backdrop-blur-xl px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-cyan-400 border border-cyan-500/30 shadow-[0_0_10px_rgba(0,245,255,0.2)]">
+          <span className="bg-[#0B0F19]/80 backdrop-blur-md px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider text-[#E5E7EB] border border-white/[0.06]">
             {category}
           </span>
         </div>
       </div>
 
-      <div className="p-6 relative">
-        <h3 className="text-xl font-bold mb-1 line-clamp-1 text-white group-hover:text-cyan-400 transition-colors">{title}</h3>
-        <p className="text-[10px] text-gray-500 mb-6 font-mono tracking-tighter uppercase">{address}</p>
+      <div className="p-6 relative flex flex-col flex-grow justify-between">
+        <div>
+          <h3 className="text-xl font-bold mb-1 line-clamp-1 text-[#E5E7EB] group-hover:text-[#22D3EE] transition-colors">{title}</h3>
+          <p className="text-[10px] text-[#9CA3AF] mb-6 font-mono tracking-tighter uppercase">{address}</p>
 
-        <div className="space-y-3 mb-6">
-          <div className="flex justify-between text-xs font-bold">
-            <span className="text-cyan-400 neon-text-glow">{raised} ETH Raised</span>
-            <span className="text-gray-300">{percentage.toFixed(1)}%</span>
-          </div>
-          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
-            <div 
-              className="h-full bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 transition-all duration-1000 animate-pulse" 
-              style={{ width: `${percentage}%` }}
-            />
-          </div>
-          <div className="text-[10px] text-gray-500 text-right uppercase tracking-tighter font-bold">
-            Goal: {goal} ETH
+          <div className="space-y-3 mb-6">
+            <div className="flex justify-between items-end border-b border-white/[0.06] pb-4">
+               <div>
+                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Goal: {goal} ETH</p>
+                  <p className="text-xl font-black text-[#22D3EE]">{raised} Raised</p>
+               </div>
+               <div className="text-right">
+                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Progress</p>
+                  <p className="text-xl font-black text-[#E5E7EB]">{percentage.toFixed(1)}%</p>
+               </div>
+            </div>
+            
+            <div className="w-full h-1 bg-[#0B0F19] rounded-full overflow-hidden border border-white/[0.06]">
+              <div 
+                className="h-full bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] transition-all duration-1000" 
+                style={{ width: `${percentage}%` }}
+              />
+            </div>
           </div>
         </div>
 
-        <div className="flex justify-between items-center border-t border-white/5 pt-5">
+        <div className="flex justify-between items-center pt-2">
           <div className="flex flex-col">
-            <span className="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Time Left</span>
-            <span className="text-sm font-semibold text-gray-200">{deadline}</span>
+            <span className="text-[10px] text-[#9CA3AF] uppercase tracking-widest font-bold">Time Left</span>
+            <span className="text-sm font-semibold text-[#E5E7EB]">{deadline}</span>
           </div>
           <Link 
             href="/dashboard" 
-            className="px-5 py-2 glass-card hover:bg-cyan-500/20 rounded-xl text-xs font-bold transition-all border border-white/10 hover:border-cyan-400 text-white"
+            className="px-5 py-2 glass-card glass-card-hover rounded-lg text-xs font-bold text-[#E5E7EB]"
           >
             View
           </Link>
@@ -487,19 +492,18 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
 
 function StatCard({ value, label, isLoading }: { value: string; label: string; isLoading: boolean }) {
   return (
-    <div className="relative group glass-card rounded-3xl p-8 overflow-hidden transition-all duration-500 hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)]">
-      <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-lg" />
+    <div className="relative group glass-card glass-card-hover rounded-2xl p-8 overflow-hidden">
       {isLoading ? (
-        <div className="animate-pulse space-y-3 text-center relative z-10">
-          <div className="h-10 w-32 bg-white/10 rounded-lg mx-auto"></div>
-          <div className="h-4 w-24 bg-white/5 rounded-lg mx-auto"></div>
+        <div className="animate-shimmer space-y-4 text-center px-4 w-full h-full flex flex-col justify-center">
+          <div className="h-10 w-32 bg-white/[0.04] rounded-lg mx-auto"></div>
+          <div className="h-4 w-24 bg-white/[0.02] rounded-lg mx-auto"></div>
         </div>
       ) : (
         <div className="relative z-10">
-          <p className="text-5xl font-black tracking-tighter text-white group-hover:text-cyan-400 group-hover:neon-text-glow transition-all duration-300 text-center">
+          <p className="text-5xl font-black tracking-tighter text-[#E5E7EB] transition-colors duration-300 group-hover:text-[#22D3EE] text-center">
             {value}
           </p>
-          <p className="text-gray-400 font-bold mt-3 uppercase text-xs tracking-[0.2em] text-center">{label}</p>
+          <p className="text-[#9CA3AF] font-bold mt-3 uppercase text-xs tracking-[0.2em] text-center">{label}</p>
         </div>
       )}
     </div>

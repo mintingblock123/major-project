@@ -30,55 +30,64 @@ export default function AdminPage() {
 
   if (!account) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#020617] text-white">
-        <div className="w-20 h-20 bg-red-500/10 rounded-full flex items-center justify-center mb-6 border border-red-500/20 shadow-2xl shadow-red-500/10">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-[#0B0F19] text-[#E5E7EB]">
+        <div className="w-20 h-20 bg-red-500/5 rounded-full flex items-center justify-center mb-6 border border-red-500/10">
           <span className="text-3xl">🔒</span>
         </div>
-        <h2 className="text-3xl font-black tracking-tighter">Admin Access Only</h2>
-        <p className="text-gray-500 mt-2">Connect an authorized wallet to manage the network.</p>
+        <h2 className="text-3xl font-black tracking-tight">Admin Access Only</h2>
+        <p className="text-[#9CA3AF] mt-2 font-medium">Connect an authorized wallet to manage the network.</p>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#020617] text-gray-100 py-16 px-6 lg:px-12 relative overflow-hidden">
+    <div className="min-h-screen bg-[#0B0F19] text-[#E5E7EB] py-32 px-6 lg:px-12 relative overflow-hidden">
       {/* Background Decor */}
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-600/5 blur-[120px] pointer-events-none" />
+      <div className="absolute inset-0 bg-web3-grid opacity-30 pointer-events-none z-0" />
+      <div className="absolute top-0 left-0 w-full h-[400px] bg-gradient-to-b from-[#111827]/50 to-transparent pointer-events-none z-0" />
       
       <div className="max-w-7xl mx-auto relative z-10 text-left">
         
         {/* Header */}
         <div className="mb-16">
-          <span className="px-4 py-1 rounded-full bg-blue-500/10 text-blue-400 text-[10px] font-black tracking-[0.2em] uppercase border border-blue-500/20">
+          <span className="px-4 py-1.5 rounded-full bg-[#22D3EE]/10 text-[#22D3EE] text-[10px] font-black tracking-[0.2em] uppercase border border-[#22D3EE]/20">
             Network Governance
           </span>
-          <h1 className="text-6xl font-black mt-4 tracking-tighter">Admin Suite</h1>
-          <p className="text-gray-500 mt-2 font-medium">Verify deployments or deactivate projects violating policy.</p>
+          <h1 className="text-5xl font-black mt-6 tracking-tight">Admin Suite</h1>
+          <p className="text-[#9CA3AF] mt-3 font-medium text-lg">Verify deployments or deactivate projects violating policy.</p>
         </div>
 
         {/* Stats Summary */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-white/[0.03] border border-white/10 p-8 rounded-[2rem] backdrop-blur-xl">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Total Ledger Entries</p>
-            <p className="text-4xl font-black tracking-tighter">{campaigns?.length || 0}</p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+          <div className="bg-[#111827] border border-white/[0.06] p-8 rounded-2xl transition-all duration-300 hover:border-white/[0.12]">
+            <p className="text-[#9CA3AF] text-[10px] font-bold uppercase tracking-widest mb-3">Total Ledger Entries</p>
+            <p className="text-4xl font-black tracking-tight">{campaigns?.length || 0}</p>
           </div>
-          <div className="bg-white/[0.03] border border-white/10 p-8 rounded-[2rem] backdrop-blur-xl">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Pending Verification</p>
-            <p className="text-4xl font-black tracking-tighter text-orange-400">
+          <div className="bg-[#111827] border border-white/[0.06] p-8 rounded-2xl transition-all duration-300 hover:border-white/[0.12]">
+            <p className="text-[#9CA3AF] text-[10px] font-bold uppercase tracking-widest mb-3">Pending Verification</p>
+            <p className="text-4xl font-black tracking-tight text-orange-400">
               {campaigns?.filter((c: any) => c.status === 0).length || 0}
             </p>
           </div>
-          <div className="bg-white/[0.03] border border-white/10 p-8 rounded-[2rem] backdrop-blur-xl">
-            <p className="text-gray-500 text-[10px] font-black uppercase tracking-widest mb-2">Registry Status</p>
-            <p className="text-4xl font-black tracking-tighter text-green-400">Active</p>
+          <div className="bg-[#111827] border border-white/[0.06] p-8 rounded-2xl transition-all duration-300 hover:border-white/[0.12]">
+            <p className="text-[#9CA3AF] text-[10px] font-bold uppercase tracking-widest mb-3">Registry Status</p>
+            <p className="text-4xl font-black tracking-tight text-green-400">Active</p>
           </div>
         </div>
 
         {/* Content Section */}
         {isLoading ? (
           <div className="flex flex-col items-center py-20">
-            <div className="w-12 h-12 border-4 border-blue-600 border-t-transparent rounded-full animate-spin mb-4"></div>
-            <p className="text-gray-600 font-bold uppercase tracking-widest text-[10px]">Syncing Smart Contracts...</p>
+            <div className="w-12 h-12 border-4 border-[#22D3EE] border-t-transparent rounded-full animate-spin mb-6"></div>
+            <p className="text-[#9CA3AF] font-bold uppercase tracking-widest text-[10px]">Syncing Smart Contracts...</p>
+          </div>
+        ) : campaigns?.length === 0 ? (
+          <div className="text-center py-24 bg-[#111827] border border-dashed border-white/[0.06] rounded-2xl flex flex-col items-center">
+            <div className="w-16 h-16 bg-[#0B0F19] border border-white/[0.06] rounded-full flex items-center justify-center mb-6">
+              <span className="text-2xl text-[#9CA3AF]">📭</span>
+            </div>
+            <h2 className="text-2xl font-bold mb-3 text-[#E5E7EB]">Ledger Empty</h2>
+            <p className="text-[#9CA3AF] max-w-sm">No campaigns have been deployed to the network yet.</p>
           </div>
         ) : (
           <div className="space-y-4">
@@ -129,20 +138,20 @@ function AdminCampaignRow({ campaign, sendTx }: any) {
   };
 
   return (
-    <div className="group bg-white/[0.02] border border-white/5 rounded-3xl p-6 md:p-8 hover:bg-white/[0.04] hover:border-white/10 transition-all flex flex-col md:flex-row items-center justify-between gap-6">
+    <div className="group bg-[#111827] border border-white/[0.06] rounded-2xl p-6 md:p-8 transition-all duration-300 hover:border-white/[0.12] flex flex-col md:flex-row items-center justify-between gap-6">
       
       {/* Project Info */}
       <div className="flex-1 text-left w-full">
-        <div className="flex items-center gap-3 mb-1">
-          <h3 className="text-2xl font-black tracking-tighter group-hover:text-cyan-400 transition-colors">
+        <div className="flex items-center gap-4 mb-2">
+          <h3 className="text-xl font-bold tracking-tight text-[#E5E7EB] group-hover:text-[#22D3EE] transition-colors line-clamp-1">
             {campaign.name}
           </h3>
           {/* Status Badge */}
-          {safeStatus === 0 && <span className="text-[9px] font-black text-orange-400 uppercase tracking-widest px-2 py-0.5 bg-orange-500/10 rounded-md border border-orange-500/20">Pending</span>}
-          {safeStatus === 1 && <span className="text-[9px] font-black text-green-400 uppercase tracking-widest px-2 py-0.5 bg-green-500/10 rounded-md border border-green-500/20">Verified</span>}
-          {safeStatus === 2 && <span className="text-[9px] font-black text-red-400 uppercase tracking-widest px-2 py-0.5 bg-red-500/10 rounded-md border border-red-500/20">Rejected / Deleted</span>}
+          {safeStatus === 0 && <span className="text-[10px] font-bold text-orange-400 uppercase tracking-widest px-3 py-1 bg-orange-500/10 rounded-full border border-orange-500/20 whitespace-nowrap">Pending</span>}
+          {safeStatus === 1 && <span className="text-[10px] font-bold text-green-400 uppercase tracking-widest px-3 py-1 bg-green-500/10 rounded-full border border-green-500/20 whitespace-nowrap">Verified</span>}
+          {safeStatus === 2 && <span className="text-[10px] font-bold text-red-400 uppercase tracking-widest px-3 py-1 bg-red-500/10 rounded-full border border-red-500/20 whitespace-nowrap">Rejected / Deleted</span>}
         </div>
-        <p className="text-[10px] font-mono text-gray-600 uppercase tracking-widest">
+        <p className="text-[10px] font-mono text-[#9CA3AF] uppercase tracking-widest">
           Hash: {campaign.campaignAddress}
         </p>
       </div>
@@ -153,7 +162,7 @@ function AdminCampaignRow({ campaign, sendTx }: any) {
         {/* Document Review Button */}
         <Link 
           href={`/admin/docs/${campaign.campaignAddress.toLowerCase()}`}
-          className="px-6 py-3 bg-white/5 border border-white/10 rounded-2xl text-[10px] font-black uppercase tracking-widest text-gray-400 hover:text-white hover:bg-white/10 transition-all"
+          className="px-5 py-2.5 bg-[#0B0F19] border border-white/[0.06] rounded-xl text-[10px] font-bold uppercase tracking-widest text-[#9CA3AF] hover:text-[#E5E7EB] hover:bg-white/[0.05] transition-colors"
         >
           Review Files
         </Link>
@@ -163,9 +172,9 @@ function AdminCampaignRow({ campaign, sendTx }: any) {
           <button
             disabled={isProcessing}
             onClick={() => handleAction('verify')}
-            className="px-6 py-3 bg-white text-black text-[10px] font-black rounded-2xl uppercase tracking-widest hover:bg-cyan-400 transition-all active:scale-95 disabled:opacity-50 shadow-xl shadow-cyan-500/10"
+            className="px-6 py-2.5 bg-gradient-to-r from-cyan-400 to-purple-500 text-white shadow-sm text-[10px] font-bold rounded-xl uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50"
           >
-            {isProcessing ? "WAIT" : "Approve"}
+            {isProcessing ? "Wait..." : "Approve"}
           </button>
         )}
 
@@ -178,16 +187,16 @@ function AdminCampaignRow({ campaign, sendTx }: any) {
                 handleAction('reject');
               }
             }}
-            className="px-6 py-3 bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-black rounded-2xl uppercase tracking-widest hover:bg-red-500 hover:text-white transition-all active:scale-95"
+            className="px-4 py-2.5 bg-transparent text-red-400 hover:bg-red-500/10 text-[10px] font-bold rounded-xl uppercase tracking-widest transition-colors active:scale-[0.98] disabled:opacity-50"
           >
-            {isProcessing ? "..." : "Delete / Hide"}
+            {isProcessing ? "..." : "Delete"}
           </button>
         )}
 
         {/* Finalized Status Icon */}
         {(safeStatus === 1 || safeStatus === 2) && !isProcessing && (
-           <div className={`p-3 rounded-2xl bg-white/5 border ${safeStatus === 1 ? 'border-green-500/20' : 'border-red-500/20'}`}>
-              <svg className={`w-5 h-5 ${safeStatus === 1 ? 'text-green-500' : 'text-red-500'}`} fill="currentColor" viewBox="0 0 20 20">
+           <div className={`p-2.5 rounded-xl bg-[#0B0F19] border ${safeStatus === 1 ? 'border-green-500/20' : 'border-red-500/20'}`}>
+              <svg className={`w-4 h-4 ${safeStatus === 1 ? 'text-green-500' : 'text-red-500'}`} fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
               </svg>
            </div>

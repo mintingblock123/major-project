@@ -58,31 +58,32 @@ export default function DashboardPage() {
 
   if (!account) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-[#020617] text-white">
-        <div className="w-20 h-20 bg-white/5 rounded-full flex items-center justify-center mb-6 border border-white/10 shadow-2xl">
-          <span className="text-3xl animate-pulse">🔒</span>
+      <div className="min-h-screen flex flex-col items-center justify-center text-center">
+        <div className="w-20 h-20 bg-[#111827] rounded-full flex items-center justify-center mb-6 border border-white/[0.06] shadow-sm">
+          <span className="text-3xl">🔒</span>
         </div>
-        <p className="text-2xl font-black mb-2 tracking-tighter text-center">Connection Required</p>
-        <button className="mt-8 px-8 py-3 bg-white text-black font-bold rounded-xl">Connect Wallet</button>
+        <p className="text-2xl font-black mb-2 tracking-tighter text-[#E5E7EB]">Connection Required</p>
+        <p className="text-[#9CA3AF] mb-8 font-medium">Please connect your Web3 wallet to access your dashboard.</p>
+        <button className="px-8 py-3 bg-[#E5E7EB] text-[#111827] hover:bg-white font-bold rounded-xl transition-all duration-300">Connect Wallet</button>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen py-24 px-6 relative overflow-hidden text-left">
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-cyan-500/10 blur-[150px] pointer-events-none animate-pulse-slow" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-purple-600/10 blur-[150px] pointer-events-none animate-pulse-slow object-cover" style={{ animationDelay: "1s" }} />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay pointer-events-none z-0" />
+    <div className="min-h-screen py-32 px-6 relative overflow-hidden text-left">
+      <div className="absolute inset-0 bg-web3-grid opacity-30 pointer-events-none z-0" />
+      <div className="absolute top-0 left-0 w-full h-[500px] bg-gradient-to-b from-[#111827]/50 to-transparent pointer-events-none z-0" />
+      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-10 mix-blend-overlay pointer-events-none z-0" />
       
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-8 relative z-10">
           <div>
-            <h1 className="text-5xl font-black tracking-tighter mb-4 uppercase text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-white">Dashboard</h1>
-            <p className="text-gray-400 font-medium max-w-xl italic">Manage your active deployments and fund flow protocol.</p>
+            <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-4 text-[#E5E7EB]">Dashboard</h1>
+            <p className="text-[#9CA3AF] font-medium max-w-xl">Manage your active deployments and fund flow protocol.</p>
           </div>
           <Link
             href="/create"
-            className="px-8 py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black text-xs uppercase tracking-widest hover:scale-105 transition-all shadow-[0_0_20px_rgba(0,245,255,0.4)] active:scale-95 border border-cyan-400/50"
+            className="px-8 py-4 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-500 text-white font-bold text-sm hover:scale-[1.02] transition-all shadow-sm active:scale-[0.98] flex items-center gap-2"
           >
             + New Project
           </Link>
@@ -97,21 +98,38 @@ export default function DashboardPage() {
         )}
 
         {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
             {[1, 2, 3].map(i => (
-              <div key={i} className="h-96 glass-card animate-pulse rounded-[2.5rem]" />
+              <div key={i} className="h-[450px] bg-[#111827] border border-white/[0.06] rounded-2xl animate-shimmer overflow-hidden flex flex-col">
+                <div className="h-44 bg-white/[0.02]" />
+                <div className="p-8 flex-1 space-y-6">
+                   <div className="h-6 w-3/4 bg-white/[0.04] rounded" />
+                   <div className="h-3 w-1/2 bg-white/[0.02] rounded" />
+                   <div className="space-y-3 pt-6">
+                      <div className="flex justify-between">
+                         <div className="h-10 w-24 bg-white/[0.04] rounded" />
+                         <div className="h-10 w-24 bg-white/[0.02] rounded" />
+                      </div>
+                      <div className="h-2 w-full bg-white/[0.04] rounded-full" />
+                   </div>
+                </div>
+              </div>
             ))}
           </div>
         ) : campaigns.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
             {campaigns.map((campaign, index) => (
               <DashboardFilter key={index} campaign={campaign} />
             ))}
           </div>
         ) : (
-          <div className="text-center py-32 glass-card border-dashed border-white/20 rounded-[3rem] relative z-10">
-            <h2 className="text-2xl font-black mb-4 text-white">Registry Empty</h2>
-            <Link href="/create" className="text-cyan-400 font-bold hover:text-cyan-300 transition-colors hover:neon-text-glow">Start Your First Campaign →</Link>
+          <div className="text-center py-24 bg-[#111827] border border-dashed border-white/[0.06] rounded-2xl relative z-10 flex flex-col items-center">
+            <div className="w-16 h-16 bg-[#0B0F19] border border-white/[0.06] rounded-full flex items-center justify-center mb-6">
+              <span className="text-2xl text-[#9CA3AF]">📂</span>
+            </div>
+            <h2 className="text-2xl font-bold mb-3 text-[#E5E7EB]">No Active Campaigns</h2>
+            <p className="text-[#9CA3AF] mb-8 max-w-sm">You haven't created any campaigns yet. Start building your project on the blockchain today.</p>
+            <Link href="/create" className="px-6 py-3 bg-[#E5E7EB] text-[#111827] font-bold rounded-xl transition-all duration-300 hover:scale-[1.02]">Start Your First Campaign</Link>
           </div>
         )}
       </div>
@@ -162,86 +180,86 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
   const daysLeft = !isExpired ? Math.ceil((deadlineNum - now) / 86400) : 0;
 
   const getBadgeTheme = () => {
-    if (isExpired) return "bg-red-500/20 text-red-400 border-red-500/30";
+    if (isExpired) return "bg-red-500/10 text-red-400 border-red-500/20";
     switch(safeStatus) {
-      case 1: return "bg-green-500/20 text-green-400 border-green-500/30"; // Verified
-      case 2: return "bg-red-500/20 text-red-400 border-red-500/30"; // Rejected
-      default: return "bg-orange-500/20 text-orange-400 border-orange-500/30"; // Pending
+      case 1: return "bg-green-500/10 text-green-400 border-green-500/20"; // Verified
+      case 2: return "bg-red-500/10 text-red-400 border-red-500/20"; // Rejected
+      default: return "bg-orange-500/10 text-orange-400 border-orange-500/20"; // Pending
     }
   };
 
-  const statusText = isExpired ? "Campaign Closed" : (safeStatus === 1 ? "Verified" : "Pending");
+  const statusText = isExpired ? "Closed" : (safeStatus === 1 ? "Verified" : "Pending");
   const coverImg = CATEGORY_DATA[activeCategory]?.img || CATEGORY_DATA["Default"].img;
 
   return (
-    <div className={`group glass-card rounded-[2.5rem] overflow-hidden flex flex-col h-full transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(0,245,255,0.2)] hover:border-cyan-500/50 ${isExpired ? 'opacity-75 grayscale-[0.2]' : ''}`}>
+    <div className={`group bg-[#111827] border border-white/[0.06] rounded-2xl overflow-hidden flex flex-col h-full glass-card-hover ${isExpired ? 'opacity-75 grayscale-[0.2]' : ''}`}>
       
       <div className="relative h-44 overflow-hidden">
-        <img src={coverImg} alt="Campaign" className="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-700" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent" />
+        <img src={coverImg} alt="Campaign" className="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform duration-700" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent" />
         
-        <div className="absolute top-6 left-6 flex items-center gap-3">
-          <div className={`px-4 py-1.5 rounded-full text-[9px] font-black uppercase tracking-[0.2em] border backdrop-blur-md ${getBadgeTheme()}`}>
+        <div className="absolute top-4 left-4 flex items-center gap-3">
+          <div className={`px-3 py-1.5 rounded-full text-[10px] font-bold uppercase tracking-wider backdrop-blur-md border ${getBadgeTheme()}`}>
             {statusText}
           </div>
-          {!isExpired && safeStatus === 0 && <div className="w-2 h-2 bg-orange-400 rounded-full animate-ping" />}
+          {!isExpired && safeStatus === 0 && <div className="w-1.5 h-1.5 bg-orange-400 rounded-full animate-ping" />}
         </div>
       </div>
 
-      <div className="p-8 flex-1 flex flex-col justify-between">
+      <div className="p-6 flex-1 flex flex-col justify-between">
         <div className="text-left">
-          <h3 className="text-2xl font-black tracking-tighter mb-2 truncate uppercase group-hover:text-cyan-400 transition-colors">
+          <h3 className="text-xl font-bold mb-1 truncate text-[#E5E7EB] group-hover:text-[#22D3EE] transition-colors">
             {campaign.name}
           </h3>
-          <p className="text-[10px] font-mono text-gray-600 mb-8 truncate tracking-widest uppercase">
+          <p className="text-[10px] font-mono text-[#9CA3AF]/60 mb-6 truncate tracking-widest uppercase">
             {campaign.campaignAddress.slice(0, 8)}...{campaign.campaignAddress.slice(-4)}
           </p>
 
-          <div className="space-y-6 mb-8 mt-6">
+          <div className="space-y-4 mb-6 pt-4 border-t border-white/[0.06]">
             <div className="flex justify-between items-end">
                <div>
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Goal: {goalEth} ETH</p>
-                  <p className="text-xl font-black text-cyan-400">{raisedEth.toFixed(3)} Raised</p>
+                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Goal: {goalEth} ETH</p>
+                  <p className="text-xl font-black text-[#22D3EE]">{raisedEth.toFixed(3)} Raised</p>
                </div>
                <div className="text-right">
-                  <p className="text-[10px] font-bold text-gray-500 uppercase tracking-widest mb-1">Time Left</p>
-                  <p className={`text-xl font-black ${isExpired ? 'text-red-500' : 'text-white'}`}>
+                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Time Left</p>
+                  <p className={`text-xl font-black ${isExpired ? 'text-red-400' : 'text-[#E5E7EB]'}`}>
                     {isExpired ? "Ended" : `${daysLeft} Days`}
                   </p>
                </div>
             </div>
 
-            <div className="w-full h-2 bg-white/5 rounded-full overflow-hidden border border-white/5">
+            <div className="w-full h-1 bg-[#0B0F19] rounded-full overflow-hidden border border-white/[0.06]">
               <div 
-                className={`h-full transition-all duration-1000 ${isExpired ? 'bg-gray-500' : 'bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 animate-pulse'}`}
+                className={`h-full transition-all duration-1000 ${isExpired ? 'bg-gray-600' : 'bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6]'}`}
                 style={{ width: `${progress}%` }}
               />
             </div>
           </div>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {isExpired ? (
-            <button disabled className="w-full py-4 rounded-2xl bg-white/5 border border-white/5 text-gray-600 font-black text-xs uppercase tracking-widest cursor-not-allowed">
+            <button disabled className="w-full py-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[#9CA3AF] font-bold text-xs uppercase cursor-not-allowed">
               Funding Closed
             </button>
           ) : safeStatus === 1 ? (
             <Link
               href={`/campaign/${campaign.campaignAddress}`}
-              className="flex items-center justify-center w-full py-4 rounded-2xl bg-gradient-to-r from-cyan-500 to-purple-600 text-white font-black text-xs uppercase tracking-[0.2em] transition-all hover:scale-[1.02] active:scale-95 shadow-[0_0_15px_rgba(0,245,255,0.3)] hover:shadow-[0_0_25px_rgba(0,245,255,0.5)] border border-cyan-400/50"
+              className="flex items-center justify-center w-full py-3.5 rounded-xl bg-[#E5E7EB] text-[#111827] font-bold text-sm transition-all hover:bg-white hover:scale-[1.02] active:scale-[0.98]"
             >
-              Manage & Fund →
+              Manage & Fund
             </Link>
           ) : (
-             <div className="p-4 bg-orange-500/5 rounded-2xl border border-orange-500/10 flex items-center gap-3">
-                <span className="text-lg">⏳</span>
+             <div className="p-3 bg-orange-500/5 rounded-xl border border-orange-500/10 flex items-center justify-center gap-2">
+                <span className="text-sm">⏳</span>
                 <p className="text-[10px] text-orange-400 font-bold uppercase tracking-widest">Awaiting Approval</p>
              </div>
           )}
           
           <Link 
             href={`/admin/docs/${campaign.campaignAddress}`}
-            className="block w-full text-center py-2 text-[10px] font-bold text-gray-500 hover:text-white transition uppercase tracking-widest"
+            className="block w-full text-center py-2 text-[10px] font-bold text-[#9CA3AF] hover:text-[#E5E7EB] transition uppercase tracking-widest"
           >
             Review Uploaded Files
           </Link>
@@ -253,14 +271,13 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
 
 function DashboardStat({ label, value, icon }: { label: string; value: string | number; icon: string }) {
   return (
-    <div className="glass-card rounded-[2rem] p-8 text-left hover:border-cyan-500/50 hover:shadow-[0_0_20px_rgba(0,245,255,0.2)] transition-all duration-500 group relative overflow-hidden">
-      <div className="absolute -inset-1 bg-gradient-to-br from-cyan-500/0 via-cyan-500/5 to-purple-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-md" />
-      <div className="relative z-10">
-        <div className="flex items-center gap-4 mb-4">
-          <span className="text-xl bg-white/5 p-3 rounded-xl group-hover:scale-110 group-hover:text-cyan-400 transition-all border border-white/5 group-hover:border-cyan-500/30 shadow-[0_0_10px_rgba(0,0,0,0.5)]">{icon}</span>
-          <span className="text-gray-400 text-[10px] font-bold uppercase tracking-[0.2em]">{label}</span>
+    <div className="bg-[#111827] border border-white/[0.06] rounded-2xl p-8 text-left transition-all duration-300 group relative overflow-hidden glass-card-hover">
+      <div className="relative z-10 flex flex-col h-full justify-between">
+        <div className="flex items-center gap-4 mb-6">
+          <span className="text-lg bg-[#0B0F19] p-3 rounded-lg border border-white/[0.06] flex items-center justify-center group-hover:border-[#22D3EE]/30 transition-colors duration-300">{icon}</span>
+          <span className="text-[#9CA3AF] text-[10px] font-bold uppercase tracking-widest">{label}</span>
         </div>
-        <p className="text-4xl font-black tracking-tighter text-white group-hover:text-cyan-400 group-hover:neon-text-glow transition-all duration-300">{value}</p>
+        <p className="text-4xl font-black tracking-tight text-[#E5E7EB] group-hover:text-[#22D3EE] transition-colors duration-300">{value}</p>
       </div>
     </div>
   );

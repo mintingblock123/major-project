@@ -262,7 +262,7 @@ export default function CreateCampaignPage() {
               <label className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest block mb-1">Upload Gov ID (PDF/PNG)</label>
               <input
                 type="file"
-                className="block w-full text-sm text-[#9CA3AF] file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#111827] file:text-[#E5E7EB] file:border file:border-white/[0.06] hover:file:bg-white/[0.05] cursor-pointer transition-all border border-white/[0.06] p-1.5 rounded-xl bg-[#111827]"
+                className="block w-full text-sm text-[#9CA3AF] file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#111827] file:text-[#E5E7EB] file:border-white/[0.06] hover:file:bg-white/[0.05] cursor-pointer transition-all border border-white/[0.06] p-1.5 rounded-xl bg-[#111827]"
                 onChange={(e) => {
                   const file = e.target.files?.[0] || null;
                   if (file) {
@@ -278,7 +278,7 @@ export default function CreateCampaignPage() {
               <label className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest block mb-1">Upload Campaign Proof</label>
               <input
                 type="file"
-                className="block w-full text-sm text-[#9CA3AF] file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#111827] file:text-[#E5E7EB] file:border file:border-white/[0.06] hover:file:bg-white/[0.05] cursor-pointer transition-all border border-white/[0.06] p-1.5 rounded-xl bg-[#111827]"
+                className="block w-full text-sm text-[#9CA3AF] file:mr-4 file:py-2.5 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-[#111827] file:text-[#E5E7EB] file:border-white/[0.06] hover:file:bg-white/[0.05] cursor-pointer transition-all border border-white/[0.06] p-1.5 rounded-xl bg-[#111827]"
                 onChange={(e) => {
                   const file = e.target.files?.[0] || null;
                   if (file) {

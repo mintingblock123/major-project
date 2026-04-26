@@ -61,7 +61,8 @@ function CampaignDetails({ address }: { address: string }) {
   const progress = goalEth > 0 ? Math.min((raisedEth / goalEth) * 100, 100) : 0;
 
   const isOwner = owner && account?.address && owner.toLowerCase() === account.address.toLowerCase();
-  const canEditTiers = !!(isOwner && statusText === "VERIFIED");
+  const isClosed = progress >= 100 || statusText === "COMPLETED";
+  const canEditTiers = !!(isOwner && statusText === "VERIFIED" && !isClosed);
 
   const handleAddTier = async () => {
     if (!tierName || !tierAmount) { alert("Fill tier name and amount"); return; }
@@ -166,6 +167,7 @@ function CampaignDetails({ address }: { address: string }) {
                       index={index}
                       contract={contract}
                       isEditing={canEditTiers}
+                      isClosed={isClosed}
                       onTransactionConfirmed={() => setRefresh((p) => p + 1)}
                     />
                   </div>

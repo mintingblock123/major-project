@@ -43,6 +43,12 @@ const Navbar = () => {
                   Admin
                 </p>
               </Link>
+
+              <Link href="https://sepolia.etherscan.io/address/0xa337020d50b77a99758b55B73dcB3193F6E00677">
+                <p className="rounded-full px-4 py-2 text-sm font-bold text-[#9CA3AF] hover:text-[#22D3EE] hover:bg-white/[0.02] transition-colors duration-200">
+                  Etherscan
+                </p>
+              </Link>
             </div>
           </div>
 

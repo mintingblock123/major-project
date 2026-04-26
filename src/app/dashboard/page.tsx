@@ -166,7 +166,7 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
 
   const { data: status } = useReadContract({ contract: campaignContract, method: "function status() view returns (uint8)" });
   const { data: goal } = useReadContract({ contract: campaignContract, method: "function goal() view returns (uint256)" });
-  const { data: raised } = useReadContract({ contract: campaignContract, method: "function amountCollected() view returns (uint256)" });
+  const { data: raised } = useReadContract({ contract: campaignContract, method: "function getContractBalance() view returns (uint256)" });
   const { data: deadline } = useReadContract({ contract: campaignContract, method: "function deadline() view returns (uint256)" });
 
   const safeStatus = Number(status || 0);
@@ -184,11 +184,12 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
     switch(safeStatus) {
       case 1: return "bg-green-500/10 text-green-400 border-green-500/20"; // Verified
       case 2: return "bg-red-500/10 text-red-400 border-red-500/20"; // Rejected
+      case 3: return "bg-purple-500/10 text-purple-400 border-purple-500/20"; // Completed
       default: return "bg-orange-500/10 text-orange-400 border-orange-500/20"; // Pending
     }
   };
 
-  const statusText = isExpired ? "Closed" : (safeStatus === 1 ? "Verified" : "Pending");
+  const statusText = isExpired ? "Closed" : (safeStatus === 1 ? "Verified" : safeStatus === 3 ? "Completed" : "Pending");
   const coverImg = CATEGORY_DATA[activeCategory]?.img || CATEGORY_DATA["Default"].img;
 
   return (
@@ -243,7 +244,7 @@ function CampaignCard({ campaign }: { campaign: Campaign }) {
             <button disabled className="w-full py-3.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[#9CA3AF] font-bold text-xs uppercase cursor-not-allowed">
               Funding Closed
             </button>
-          ) : safeStatus === 1 ? (
+          ) : safeStatus === 1 || safeStatus === 3 ? (
             <Link
               href={`/campaign/${campaign.campaignAddress}`}
               className="flex items-center justify-center w-full py-3.5 rounded-xl bg-[#E5E7EB] text-[#111827] font-bold text-sm transition-all hover:bg-white hover:scale-[1.02] active:scale-[0.98]"

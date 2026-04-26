@@ -153,7 +153,7 @@ export default function HomePage() {
             Fund the <span className="text-gradient">Future</span>.
           </h1>
           <p className="mt-8 max-w-2xl mx-auto text-[#9CA3AF] text-lg md:text-xl leading-relaxed">
-            Eliminate middlemen and build trust. FundFlow uses smart contracts to ensure 
+            Eliminate middlemen and build trust. FundFlow uses smart contracts to ensure
             every penny reaches the right cause with 100% transparency.
           </p>
           <div className="mt-12 flex justify-center gap-6 flex-wrap">
@@ -191,9 +191,9 @@ export default function HomePage() {
         <div className="glass-card rounded-[2rem] p-8 md:p-12 flex flex-col md:flex-row gap-10 items-center overflow-hidden relative group">
           <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-[#22D3EE]/5 blur-[100px] -z-10 transition-colors duration-1000" />
           <div className="w-full md:w-1/2 aspect-video rounded-2xl overflow-hidden border border-white/[0.06]">
-            <img 
-              src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800" 
-              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90" 
+            <img
+              src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800"
+              className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-90"
               alt="Spotlight"
             />
           </div>
@@ -229,9 +229,9 @@ export default function HomePage() {
             <p className="text-[#9CA3AF] mt-2">Explore projects that are making waves on the blockchain.</p>
           </div>
           <div className="flex gap-2 w-full md:w-auto">
-             <input 
-              type="text" 
-              placeholder="Search..." 
+            <input
+              type="text"
+              placeholder="Search..."
               className="bg-[#111827] border border-white/[0.06] rounded-xl px-4 py-2 text-sm focus:outline-none focus:border-[#22D3EE] focus:ring-1 focus:ring-[#22D3EE]/40 transition-all w-full md:w-64 text-[#E5E7EB]"
             />
             <Link href="/dashboard" className="text-[#9CA3AF] hover:text-[#22D3EE] font-bold text-sm whitespace-nowrap pt-2 transition-colors duration-200">
@@ -252,21 +252,21 @@ export default function HomePage() {
         <h2 className="text-3xl font-bold text-center mb-20 text-[#E5E7EB]">How FundFlow Works</h2>
         <div className="space-y-16 relative">
           <div className="absolute left-[23px] top-10 bottom-10 w-[2px] bg-white/[0.06] hidden md:block" />
-          
-          <Step 
-            number="01" 
-            title="Connect Your Wallet" 
-            desc="Link your Web3 wallet (MetaMask, Coinbase, etc.) to securely interact with the platform and confirm transactions on the Sepolia network." 
+
+          <Step
+            number="01"
+            title="Connect Your Wallet"
+            desc="Link your Web3 wallet (MetaMask, Coinbase, etc.) to securely interact with the platform and confirm transactions on the Sepolia network."
           />
-          <Step 
-            number="02" 
-            title="Create & Verify" 
-            desc="Fill in your campaign details and upload your identity documents. Our admin team verifies every campaign to maintain high trust levels." 
+          <Step
+            number="02"
+            title="Create & Verify"
+            desc="Fill in your campaign details and upload your identity documents. Our admin team verifies every campaign to maintain high trust levels."
           />
-          <Step 
-            number="03" 
-            title="Flow the Funds" 
-            desc="Once verified, your campaign goes live. Funds flow directly from backers to the smart contract, ready for withdrawal once goals are met." 
+          <Step
+            number="03"
+            title="Flow the Funds"
+            desc="Once verified, your campaign goes live. Funds flow directly from backers to the smart contract, ready for withdrawal once goals are met."
           />
         </div>
       </section>
@@ -279,25 +279,25 @@ export default function HomePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <FeatureCard 
+          <FeatureCard
             icon="🛡️"
-            title="Immutable" 
-            desc="Every donation is recorded on Sepolia testnet forever." 
+            title="Immutable"
+            desc="Every donation is recorded on Sepolia testnet forever."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="⚡"
-            title="Instant Flow" 
-            desc="Funds are distributed directly through smart contracts." 
+            title="Instant Flow"
+            desc="Funds are distributed directly through smart contracts."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="🌍"
-            title="Global Reach" 
-            desc="Anyone with a wallet can support your cause." 
+            title="Global Reach"
+            desc="Anyone with a wallet can support your cause."
           />
-          <FeatureCard 
+          <FeatureCard
             icon="💎"
-            title="Zero Fees" 
-            desc="Minimal overhead compared to traditional platforms." 
+            title="Zero Fees"
+            desc="Minimal overhead compared to traditional platforms."
           />
         </div>
       </section>
@@ -314,12 +314,12 @@ export default function HomePage() {
       <footer className="border-t border-white/5 py-12 mt-10">
         <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="text-gray-500 text-sm italic">
-            Built with ❤️ for the Web3 Community.
+            Made By Group 13.
           </div>
           <div className="flex gap-8 text-sm text-gray-400">
-            <Link href="#">Twitter</Link>
-            <Link href="#">Github</Link>
-            <Link href="#">Documentation</Link>
+            <Link href="https://www.linkedin.com/">LinkedIn</Link>
+            <Link href="https://github.com/mintingblock123/major-project">Github</Link>
+            <Link href="https://ethereum.org/developers/docs/">Documentation</Link>
           </div>
           <div className="text-gray-500 text-sm">
             © 2026 FundFlow • Sepolia Mainnet
@@ -386,9 +386,8 @@ function ChatBot() {
           <div className="h-80 overflow-y-auto p-4 space-y-4 bg-black/20 text-left">
             {history.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
-                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${
-                  msg.role === "user" ? "bg-cyan-600 text-white" : "bg-white/10 text-gray-200"
-                }`}>
+                <div className={`max-w-[80%] p-3 rounded-2xl text-sm ${msg.role === "user" ? "bg-cyan-600 text-white" : "bg-white/10 text-gray-200"
+                  }`}>
                   {msg.text}
                 </div>
               </div>
@@ -434,10 +433,10 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
   return (
     <div className="glass-card glass-card-hover rounded-2xl overflow-hidden group text-left flex flex-col h-full bg-[#111827]">
       <div className="relative h-48 overflow-hidden">
-        <img 
-          src={img} 
-          alt={title} 
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" 
+        <img
+          src={img}
+          alt={title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent" />
         <div className="absolute top-4 left-4">
@@ -454,19 +453,19 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
 
           <div className="space-y-3 mb-6">
             <div className="flex justify-between items-end border-b border-white/[0.06] pb-4">
-               <div>
-                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Goal: {goal} ETH</p>
-                  <p className="text-xl font-black text-[#22D3EE]">{raised} Raised</p>
-               </div>
-               <div className="text-right">
-                  <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Progress</p>
-                  <p className="text-xl font-black text-[#E5E7EB]">{percentage.toFixed(1)}%</p>
-               </div>
+              <div>
+                <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Goal: {goal} ETH</p>
+                <p className="text-xl font-black text-[#22D3EE]">{raised} Raised</p>
+              </div>
+              <div className="text-right">
+                <p className="text-[10px] font-bold text-[#9CA3AF] uppercase tracking-widest mb-1">Progress</p>
+                <p className="text-xl font-black text-[#E5E7EB]">{percentage.toFixed(1)}%</p>
+              </div>
             </div>
-            
+
             <div className="w-full h-1 bg-[#0B0F19] rounded-full overflow-hidden border border-white/[0.06]">
-              <div 
-                className="h-full bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] transition-all duration-1000" 
+              <div
+                className="h-full bg-gradient-to-r from-[#22D3EE] to-[#8B5CF6] transition-all duration-1000"
                 style={{ width: `${percentage}%` }}
               />
             </div>
@@ -478,8 +477,8 @@ function CampaignCard({ category, title, goal, raised, deadline, address, img }:
             <span className="text-[10px] text-[#9CA3AF] uppercase tracking-widest font-bold">Time Left</span>
             <span className="text-sm font-semibold text-[#E5E7EB]">{deadline}</span>
           </div>
-          <Link 
-            href="/dashboard" 
+          <Link
+            href="/dashboard"
             className="px-5 py-2 glass-card glass-card-hover rounded-lg text-xs font-bold text-[#E5E7EB]"
           >
             View

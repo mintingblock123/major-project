@@ -16,10 +16,11 @@ type Props = {
   index: number;
   contract: any;
   isEditing: boolean;
+  isClosed?: boolean;
   onTransactionConfirmed: () => void;
 };
 
-export default function TierCard({ tier, index, contract, isEditing, onTransactionConfirmed }: Props) {
+export default function TierCard({ tier, index, contract, isEditing, isClosed, onTransactionConfirmed }: Props) {
   const { mutateAsync: sendTx, isPending } = useSendTransaction();
   const [isRemoving, setIsRemoving] = useState(false);
 
@@ -79,8 +80,10 @@ export default function TierCard({ tier, index, contract, isEditing, onTransacti
               </span>
             </div>
           </div>
-          <div className="bg-cyan-500/10 px-3 py-1 rounded-lg border border-cyan-500/20">
-             <span className="text-cyan-400 text-[10px] font-black uppercase tracking-widest">Active</span>
+          <div className={`px-3 py-1 rounded-lg border ${isClosed ? 'bg-purple-500/10 border-purple-500/20' : 'bg-cyan-500/10 border-cyan-500/20'}`}>
+             <span className={`${isClosed ? 'text-purple-400' : 'text-cyan-400'} text-[10px] font-black uppercase tracking-widest`}>
+               {isClosed ? 'Closed' : 'Active'}
+             </span>
           </div>
         </div>
 
@@ -96,10 +99,14 @@ export default function TierCard({ tier, index, contract, isEditing, onTransacti
         <div className="mt-auto space-y-3">
           <button
             onClick={handleFund}
-            disabled={isPending}
-            className="w-full py-4 bg-white text-black font-black text-[10px] uppercase tracking-[0.2em] rounded-xl hover:bg-cyan-400 transition-all active:scale-95 shadow-xl shadow-white/5 disabled:opacity-50"
+            disabled={isPending || isClosed}
+            className={`w-full py-4 font-black text-[10px] uppercase tracking-[0.2em] rounded-xl transition-all shadow-xl shadow-white/5 ${
+              isClosed 
+                ? 'bg-purple-500/20 text-purple-400 cursor-not-allowed border border-purple-500/30' 
+                : 'bg-white text-black hover:bg-cyan-400 active:scale-95 disabled:opacity-50'
+            }`}
           >
-            {isPending ? "Syncing..." : "Support this Tier"}
+            {isClosed ? "100% Funded - Closed" : (isPending ? "Syncing..." : "Support this Tier")}
           </button>
 
           {isEditing && (

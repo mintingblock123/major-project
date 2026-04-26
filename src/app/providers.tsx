@@ -1,11 +1,16 @@
 "use client";
 
 import { ThirdwebProvider } from "thirdweb/react";
+import { NotificationProvider } from "@/app/context/NotificationContext";
 
 export default function Providers({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  return <ThirdwebProvider>{children}</ThirdwebProvider>;
+  return (
+    <ThirdwebProvider>
+      <NotificationProvider>{children}</NotificationProvider>
+    </ThirdwebProvider>
+  );
 }

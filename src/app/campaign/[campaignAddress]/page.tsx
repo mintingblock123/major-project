@@ -4,6 +4,7 @@ import { client } from "@/app/client";
 import TierCard from "@/app/components/TierCard";
 import { DonorLeaderboard } from "@/app/components/DonorLeaderboard";
 import { SocialShare } from "@/app/components/SocialShare";
+import { Comments } from "@/app/components/Comments";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { getContract, prepareContractCall } from "thirdweb";
@@ -231,6 +232,11 @@ function CampaignDetails({ address }: { address: string }) {
         {/* DONOR LEADERBOARD SECTION */}
         <div className="mt-32 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <DonorLeaderboard />
+        </div>
+
+        {/* COMMENTS SECTION */}
+        <div className="mb-24 animate-in fade-in slide-in-from-bottom-4 duration-700 delay-200">
+          <Comments campaignId={address} />
         </div>
       </div>
     </div>

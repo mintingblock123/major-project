@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import Link from "next/link";
+import { Comments } from "@/app/components/Comments";
 
 type FileItem = {
   name: string;
@@ -76,6 +77,11 @@ export default async function AdminDocsPage({ params }: PageProps) {
             ))}
           </div>
         )}
+
+        {/* ADMIN COMMENTS */}
+        <div className="mt-16 bg-gray-900 rounded-2xl p-6 border border-white/10 shadow-2xl">
+          <Comments campaignId={address} isAdminView={true} />
+        </div>
       </div>
     </div>
   );

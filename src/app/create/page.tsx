@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useNotification } from "@/app/context/NotificationContext";
 import { useActiveAccount, useSendTransaction } from "thirdweb/react";
 import { getContract, prepareContractCall, readContract, waitForReceipt } from "thirdweb";
 import { sepolia } from "thirdweb/chains";
@@ -12,6 +13,7 @@ export default function CreateCampaignPage() {
   const account = useActiveAccount();
   const { mutateAsync: sendTx } = useSendTransaction();
   const router = useRouter();
+  const { showNotification } = useNotification();
 
   // Form States
   const [title, setTitle] = useState("");
@@ -118,6 +120,7 @@ export default function CreateCampaignPage() {
 
       setIsUploading(false);
       setShowSuccess(true);
+      showNotification("Campaign saved successfully!", "success");
     } catch (err) {
       console.error(err);
       setIsUploading(false);

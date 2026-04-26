@@ -5,6 +5,8 @@ import { getContract, readContract } from "thirdweb";
 import { sepolia } from "thirdweb/chains";
 import { client } from "@/app/client";
 import { CROWDFUNDING_FACTORY } from "@/app/constants/contracts";
+import { DonorLeaderboard } from "@/app/components/DonorLeaderboard";
+import React from "react";
 
 type Campaign = readonly [string, string, string, bigint];
 type Tier = readonly [string, bigint, bigint];
@@ -245,6 +247,11 @@ export default function HomePage() {
             <CampaignCard key={campaign.id} {...campaign} />
           ))}
         </div>
+      </section>
+
+      {/* DONOR LEADERBOARD SECTION */}
+      <section className="py-20 max-w-4xl mx-auto px-6">
+        <DonorLeaderboard />
       </section>
 
       {/* HOW IT WORKS SECTION (VERTICAL STEPPER) */}

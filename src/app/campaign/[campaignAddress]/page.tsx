@@ -2,6 +2,8 @@
 
 import { client } from "@/app/client";
 import TierCard from "@/app/components/TierCard";
+import { DonorLeaderboard } from "@/app/components/DonorLeaderboard";
+import { SocialShare } from "@/app/components/SocialShare";
 import { useParams } from "next/navigation";
 import { useState } from "react";
 import { getContract, prepareContractCall } from "thirdweb";
@@ -100,9 +102,13 @@ function CampaignDetails({ address }: { address: string }) {
               </span>
             </div>
             
-            <h1 className="text-5xl md:text-8xl font-black mb-10 tracking-tighter leading-[0.9] text-white">
+            <h1 className="text-5xl md:text-8xl font-black mb-6 tracking-tighter leading-[0.9] text-white">
               {name || "Untitled Campaign"}
             </h1>
+
+            <div className="mb-10">
+              <SocialShare title={name as string || "Untitled Campaign"} />
+            </div>
             
             <p className="text-gray-400 text-lg md:text-2xl leading-relaxed max-w-3xl font-medium opacity-80">
               {description}
@@ -220,6 +226,11 @@ function CampaignDetails({ address }: { address: string }) {
               </div>
             </div>
           )}
+        </div>
+
+        {/* DONOR LEADERBOARD SECTION */}
+        <div className="mt-32 mb-16 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <DonorLeaderboard />
         </div>
       </div>
     </div>
